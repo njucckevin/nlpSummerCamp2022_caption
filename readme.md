@@ -1,5 +1,5 @@
 image caption框架
-
+````
 ├── config.py	# 各类参数
 ├── data	# 数据，原始数据为带有annotations的4个json文件
 │   ├── caption_test_a_annotations_20180103.json
@@ -42,10 +42,10 @@ image caption框架
     ├── prepro_ref_pycoco.py	# 将reference转换为便于cocoEval工具计算指标的形式
     ├── prepro_tokenize.py	# 整理原始数据集并完成分词
     └── vocab.py	# 生成单词表
-
-step1：prepro_tokenize.py，整理原始数据集并完成分词，保存为train/val/test.json
-step2：vocab.py，构建单词表vocab.pkl
-step3：prepro_ref_pycoco.py，将reference转换为便于cocoEval工具计算指标的形式train/val/test_pycoco.json
-step4：之后即可以开始训练，eg：CUDA_VISIBLE_DEVICES=0 python train.py --mode train --model AdaAtt --id my_model --batch_size 100；训练时要指定的参数参考config.py、train.py和train_ddp.py；image_dir代表图像（特征）保存的路径，lig_dir代表训练日志和结果保存的路径，路径信息可参考服务器代码的路径
-step5：训练过程中可通过利用tensorboard查看训练过程并自行决定何时终止
-step6：利用test.py得到在测试集上的结果
+````
+* step1：prepro_tokenize.py，整理原始数据集并完成分词，保存为train/val/test.json
+* step2：vocab.py，构建单词表vocab.pkl
+* step3：prepro_ref_pycoco.py，将reference转换为便于cocoEval工具计算指标的形式train/val/test_pycoco.json
+* step4：之后即可以开始训练，eg：CUDA_VISIBLE_DEVICES=0 python train.py --mode train --model AdaAtt --id my_model --batch_size 100；训练时要指定的参数参考config.py、train.py和train_ddp.py；image_dir代表图像（特征）保存的路径，lig_dir代表训练日志和结果保存的路径，路径信息可参考服务器代码的路径
+* step5：训练过程中可通过利用tensorboard查看训练过程并自行决定何时终止
+* step6：利用test.py得到在测试集上的结果
