@@ -10,6 +10,8 @@ from torch.utils.data import Dataset, DataLoader
 from PIL import Image
 from torchvision.transforms import InterpolationMode
 import torchvision.transforms as transforms
+from utils.vocab import Vocabulary
+
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 

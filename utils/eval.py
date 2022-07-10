@@ -51,6 +51,8 @@ def eval_pycoco(config, gen_pycoco_path, mode):
     ref_pycoco_path = os.path.join(config.data_dir, mode+'_pycoco.json')
     ref_pycoco = json.load(open(ref_pycoco_path, 'r'))
     gen_pycoco = json.load(open(gen_pycoco_path, 'r'))
+    ref_pycoco = {int(k): v for k, v in ref_pycoco.items()}     # json读取时key类型为str，在计算SPICE时会出现问题
+    gen_pycoco = {int(k): v for k, v in gen_pycoco.items()}
 
     cocoEval = COCOEvalCap('diy', 'diy')
     pycoco_results = cocoEval.evaluate_diy(ref_pycoco, gen_pycoco)
